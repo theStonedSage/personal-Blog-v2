@@ -1,0 +1,31 @@
+ <%- include("partials/header") -%>  
+
+ <% 
+    String.prototype.trunc = String.prototype.trunc ||
+      function(n){
+          return (this.length > n) ? this.substr(0, n-1)  : this;
+      };
+ %> 
+
+
+<div class="row">
+<% postsarray.forEach(element => { %>
+    <div class="col-lg-4">
+        <div class="card space">
+            <div class="card-header">
+              <h1><%= element.title %></h1>
+            </div>
+            <div class="card-body">
+                <p><%= element.body.trunc(100)+" ..." %></p>
+                
+                <a href="/posts/<%= element.title %>  " class="btn btn-outline-dark btn-md btn-block">Read More</a>
+            </div>
+        </div>
+    </div>
+<% }) %>  
+
+</div>
+<%- include("partials/footer") -%>  
+
+
+
